@@ -1,0 +1,33 @@
+<section @fadeInAnimation>
+  <ol class="breadcrumb">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/movie">Movies</a></li>
+      <li class="active">Manage Movie</li>
+  </ol>
+
+  <a class="btn btn-primary" routerLink="/movie">Return to Movies</a>
+
+  <h1>Manage Actor Movie</h1>
+
+  <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
+
+  <form (ngSubmit)="saveActorToMovie(movieActorForm)"  #movieActorForm="ngForm" class="form-horizontal">
+
+
+    <div class="form-group">
+      <label for="actor_id" class="col-sm-2 control-label">Actor ID</label>
+      <div class="col-sm-10">
+        <input  ngModel #actor_id="ngModel" type="text" class="form-control" id="actor_id" name="actorid" placeholder="e.g. 1">
+         <span *ngIf="formErrors.actorid" class="text-danger">
+          {{ formErrors.actorid }}
+        </span>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button [disabled]="!movieActorForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</section>
